@@ -2,7 +2,6 @@
 <?php include 'includes/header.php'; ?>
 
 <style media="print">
-  /* Hapus semua pengaruh Bootstrap */
   * {
     all: unset;
     display: revert;
@@ -60,8 +59,12 @@
     background-color: #FFF !important;
     color: #000 !important;
   }
-</style>
 
+  /* Progress bar dihilangkan saat print */
+  .progress {
+    display: none !important;
+  }
+</style>
 
 <div class="container mt-5 printable">
   <div class="d-flex justify-content-between align-items-center mb-3">
@@ -102,6 +105,18 @@
           $current_jabatan = $row['nama_jabatan'];
           $jabatan_count = count(array_filter($data, fn($item) => $item['nama_jabatan'] === $current_jabatan));
         }
+
+        // Warna progress bar sesuai skor
+        $skor = (int)$row['skor'];
+        if ($skor >= 80) {
+          $bar_class = 'bg-success'; // Hijau
+        } elseif ($skor >= 60) {
+          $bar_class = 'bg-info'; // Biru
+        } elseif ($skor >= 40) {
+          $bar_class = 'bg-warning'; // Kuning
+        } else {
+          $bar_class = 'bg-danger'; // Merah
+        }
       ?>
         <tr>
           <?php if ($is_first_row_for_jabatan): ?>
@@ -114,7 +129,15 @@
           <td><?= htmlspecialchars($row['bobot']) ?></td>
           <td><?= htmlspecialchars($row['pencapaian']) ?></td>
           <td><?= htmlspecialchars($row['target']) ?></td>
-          <td><?= htmlspecialchars($row['skor']) ?></td>
+          <td>
+            <div class="progress" style="height: 20px;">
+              <div class="progress-bar <?= $bar_class ?>" role="progressbar"
+                style="width: <?= $skor ?>%;"
+                aria-valuenow="<?= $skor ?>" aria-valuemin="0" aria-valuemax="100">
+                <?= $skor ?>%
+              </div>
+            </div>
+          </td>
           <td class="no-print">
             <a href="edit_kpi.php?id=<?= $row['id'] ?>" class="btn btn-sm btn-warning" style="width: 100%; height: 30px;">Edit</a>
             <a href="delete_kpi.php?id=<?= $row['id'] ?>" class="btn btn-sm btn-danger" onclick="return confirm('Yakin ingin menghapus data KPI <?= htmlspecialchars($row['kpi']) ?>?')" style="width: 100%; height: 30px;">Hapus</a>
@@ -126,4 +149,4 @@
 </div>
 
 <?php include 'includes/footer.php'; ?>
-
+            
