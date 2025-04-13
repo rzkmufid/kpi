@@ -30,7 +30,7 @@ if ($id_jabatan) {
     $updateStmt = $pdo->prepare("UPDATE kpi SET bobot = ? WHERE jabatan_id = ?");
     $updateStmt->execute([$newBobot, $id_jabatan]);
 
-    $updateSkorStmt = $pdo->prepare("UPDATE kpi SET skor = (pencapaian / bobot) * 100 WHERE jabatan_id = ?");
+    $updateSkorStmt = $pdo->prepare("UPDATE kpi SET skor = bobot * (pencapaian / target) WHERE jabatan_id = ?");
     $updateSkorStmt->execute([$id_jabatan]);
 }
 

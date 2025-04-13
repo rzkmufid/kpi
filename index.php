@@ -90,8 +90,8 @@
         <th>Jenis Hasil</th>
         <th>Jumlah Dokumen</th>
         <th>Bobot (%)</th>
-        <th>Pencapaian (%)</th>
         <th>Target (%)</th>
+        <th>Pencapaian (%)</th>
         <th>Skor</th>
         <th class="no-print">Aksi</th>
       </tr>
@@ -127,8 +127,8 @@
           <td><?= htmlspecialchars($row['jenis_hasil']) ?></td>
           <td><?= htmlspecialchars($row['jumlah_dokumen'] . ' ' . $row['satuan_dokumen']) ?></td>
           <td><?= htmlspecialchars($row['bobot']) ?></td>
-          <td><?= htmlspecialchars($row['pencapaian']) ?></td>
           <td><?= htmlspecialchars($row['target']) ?></td>
+          <td><?= htmlspecialchars($row['pencapaian']) ?></td>
           <td>
             <div class="progress" style="height: 20px;">
               <div class="progress-bar <?= $bar_class ?>" role="progressbar"

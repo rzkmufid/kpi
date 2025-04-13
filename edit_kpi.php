@@ -36,8 +36,8 @@ $kpi = $stmt->fetch();
       </div>
     </div>
     <div class="mb-3"><label>Bobot (%)</label><input type="number" step="0.1" name="bobot" class="form-control" id="bobot" value="<?= $kpi['bobot'] ?>" readonly placeholder="Bobot"></div>
-    <div class="mb-3"><label>Pencapaian (%)</label><input type="number" step="0.01" name="pencapaian" class="form-control" id="pencapaian" value="<?= $kpi['pencapaian'] ?>" placeholder="Masukkan Pencapaian"></div>
     <div class="mb-3"><label>Target (%)</label><input type="number" step="0.01" name="target" class="form-control" value="100" readonly placeholder="Target"></div>
+    <div class="mb-3"><label>Pencapaian (%)</label><input type="number" step="0.01" name="pencapaian" class="form-control" id="pencapaian" value="<?= $kpi['pencapaian'] ?>" placeholder="Masukkan Pencapaian"></div>
     <div class="mb-3"><label>Skor</label><input type="number" step="0.01" name="skor" class="form-control" id="skor" value="<?= $kpi['skor'] ?>" readonly placeholder="Skor"></div>
     <button class="btn btn-success">Simpan Perubahan</button>
   </form>

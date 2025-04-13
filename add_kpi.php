@@ -29,8 +29,8 @@
       </div>
     </div>
     <div class="mb-3"><label>Bobot (%)</label><input type="number" step="0.1" name="bobot" class="form-control" id="bobot" readonly placeholder="Bobot"></div>
-    <div class="mb-3"><label>Pencapaian (%)</label><input type="number" step="0.01" name="pencapaian" class="form-control" id="pencapaian" placeholder="Pencapaian"></div>
     <div class="mb-3"><label>Target (%)</label><input type="number" step="0.01" name="target" class="form-control" value="100" readonly placeholder="Target"></div>
+    <div class="mb-3"><label>Pencapaian (%)</label><input type="number" step="0.01" name="pencapaian" class="form-control" id="pencapaian" placeholder="Pencapaian"></div>
     <div class="mb-3"><label>Skor</label><input type="number" step="0.01" name="skor" class="form-control" id="skor" readonly placeholder="Skor"></div>
     <button class="btn btn-success">Simpan</button>
   </form>
@@ -45,7 +45,8 @@
     const calculateSkor = () => {
       const bobot = parseFloat(bobotInput.value) || 0;
       const pencapaian = parseFloat(pencapaianInput.value) || 0;
-      const skor = (pencapaian / bobot) * 100;
+      const target = 100; // Using the fixed target value
+      const skor = bobot * (pencapaian / target);
       skorInput.value = isFinite(skor) ? skor.toFixed(2) : 0;
     };
 
